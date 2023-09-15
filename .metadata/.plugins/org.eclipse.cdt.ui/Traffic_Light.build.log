@@ -1,0 +1,22 @@
+23:48:37 **** Incremental Build of configuration Debug for project Traffic_Light ****
+make -j16 all 
+arm-none-eabi-gcc -o "Traffic_Light.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\BKU\Sem-5\Microprocessors-Microcontrollers\Workspace\Traffic_Light\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Traffic_Light.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Traffic_Light.elf
+ 
+arm-none-eabi-size   Traffic_Light.elf 
+arm-none-eabi-objdump -h -S  Traffic_Light.elf  > "Traffic_Light.list"
+arm-none-eabi-objcopy  -O ihex  Traffic_Light.elf  "Traffic_Light.hex"
+   text	   data	    bss	    dec	    hex	filename
+   4620	     20	   1572	   6212	   1844	Traffic_Light.elf
+arm-none-eabi-objcopy  -O binary  Traffic_Light.elf  "Traffic_Light.bin"
+Finished building: default.size.stdout
+ 
+Finished building: Traffic_Light.hex
+Finished building: Traffic_Light.bin
+ 
+Finished building: Traffic_Light.list
+ 
+ 
+
+23:48:37 Build Finished. 0 errors, 0 warnings. (took 349ms)
+

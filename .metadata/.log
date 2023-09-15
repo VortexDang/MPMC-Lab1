@@ -2240,3 +2240,6 @@ java.lang.Exception: Resource '/Lab1' does not exist.
 
 !ENTRY org.eclipse.cdt.core 1 0 2023-09-15 22:19:30.219
 !MESSAGE Indexed 'Lab1' (19 sources, 97 headers) in 1.75 sec: 6,757 declarations; 20,335 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.69%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-09-15 23:18:22.082
+!MESSAGE Indexed 'Lab1' (19 sources, 97 headers) in 1.31 sec: 6,757 declarations; 20,398 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.69%)

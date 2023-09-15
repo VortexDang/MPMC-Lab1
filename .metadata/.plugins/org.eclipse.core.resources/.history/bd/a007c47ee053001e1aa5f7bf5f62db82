@@ -92,29 +92,30 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   int check = 0;
-  // Initial state: turn off YELLOW and GREEN
+  // Default state: turn off GREEN and YELLOW
   HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_SET);
+
   while (1)
   {
-	// After 1 cycle, turn off GREEN and turn on RED
-	if(check == 10) {
-		HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
-		check = 0;
-	}
-	// After 5 seconds, turn off RED and turn on YELLOW
-	else if (check == 5) {
-		HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_RESET);
-	}
-	// After 7 seconds, turn off YELLOW and turn on GREEN
-	else if (check == 7) {
-		HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);
-	}
-	check++;
-    HAL_Delay(1000);
+	  // After 1 cycle, turn off GREEN and turn on RED
+	  if(check == 8) {
+		  HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
+		  HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
+		  check = 0;
+	  }
+	  check++;
+	  // After 5 seconds, turn off RED and turn on YELLOW
+	  if(check == 6) {
+		  HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
+		  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_RESET);
+	  }
+	  // After 7 seconds,  turn off YELLOW and turn on GREEN
+	  else {
+		  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_SET);
+		  HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);
+	  }
+	  HAL_Delay (1000);
   }
   /* USER CODE END 3 */
 }

@@ -2262,3 +2262,22 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 D:\BKU\Sem-5\Microproc
 
 !ENTRY org.eclipse.cdt.core 1 0 2023-09-16 13:05:05.695
 !MESSAGE Indexed 'Lab1' (19 sources, 97 headers) in 1.76 sec: 6,757 declarations; 20,332 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.69%)
+!SESSION 2023-09-16 20:55:25.554 -----------------------------------------------
+eclipse.buildId=Version 1.7.0
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  D:\BKU\Sem-5\Microprocessors-Microcontrollers\Workspace\Lab1\.project
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 D:\BKU\Sem-5\Microprocessors-Microcontrollers\Workspace\Lab1\.project
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-09-16 20:55:28.934
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-09-16 20:55:28.983
+!MESSAGE Log4j initialized with config file D:\BKU\Sem-5\Microprocessors-Microcontrollers\Workspace\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-09-16 20:55:35.037
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-09-16 20:55:37.334
+!MESSAGE Indexed 'Lab1' (19 sources, 97 headers) in 2.17 sec: 6,757 declarations; 20,627 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.68%)

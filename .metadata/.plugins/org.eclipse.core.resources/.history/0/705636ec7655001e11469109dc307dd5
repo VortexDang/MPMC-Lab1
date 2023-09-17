@@ -77,6 +77,7 @@ void clearAllClock() {
 }
 
 void setNumberOnClock(int num) {
+	clearAllClock();
 	switch(num) {
 		case 11:
 				HAL_GPIO_WritePin(LED_12_GPIO_Port, LED_12_Pin, GPIO_PIN_RESET);
@@ -148,11 +149,11 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   int check = 0;
+  clearAllClock();
 
   while (1)
   {
-	  if(check == 12 || check == 0) {
-		  clearAllClock();
+	  if(check == 12) {
 		  check = 0;
 	  }
 	  check++;

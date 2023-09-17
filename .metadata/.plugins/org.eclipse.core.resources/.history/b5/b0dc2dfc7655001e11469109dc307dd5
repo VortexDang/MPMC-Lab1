@@ -148,10 +148,11 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   int check = 0;
+  clearAllClock();
 
   while (1)
   {
-	  if(check == 12 || check == 0) {
+	  if(check == 12) {
 		  clearAllClock();
 		  check = 0;
 	  }

@@ -79,40 +79,40 @@ void clearAllClock() {
 void setNumberOnClock(int num) {
 	switch(num) {
 		case 11:
-				HAL_GPIO_WritePin(LED_12_GPIO_Port, LED_12_Pin, GPIO_PIN_RESET);
-				break;
-		case 10:
 				HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, GPIO_PIN_RESET);
 				break;
-		case 9:
+		case 10:
 				HAL_GPIO_WritePin(LED_10_GPIO_Port, LED_10_Pin, GPIO_PIN_RESET);
 				break;
-		case 8:
+		case 9:
 				HAL_GPIO_WritePin(LED_9_GPIO_Port, LED_9_Pin, GPIO_PIN_RESET);
 				break;
-		case 7:
+		case 8:
 				HAL_GPIO_WritePin(LED_8_GPIO_Port, LED_8_Pin, GPIO_PIN_RESET);
 				break;
-		case 6:
+		case 7:
 				HAL_GPIO_WritePin(LED_7_GPIO_Port, LED_7_Pin, GPIO_PIN_RESET);
 				break;
-		case 5:
+		case 6:
 				HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, GPIO_PIN_RESET);
 				break;
-		case 4:
+		case 5:
 				HAL_GPIO_WritePin(LED_5_GPIO_Port, LED_5_Pin, GPIO_PIN_RESET);
 				break;
-		case 3:
+		case 4:
 				HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_RESET);
 				break;
-		case 2:
+		case 3:
 				HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
 				break;
-		case 1:
+		case 2:
 				HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
 				break;
-		case 0:
+		case 1:
 				HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
+				break;
+		case 0:
+				HAL_GPIO_WritePin(LED_12_GPIO_Port, LED_12_Pin, GPIO_PIN_RESET);
 				break;
 	}
 }
@@ -120,40 +120,40 @@ void setNumberOnClock(int num) {
 void clearNumberOnClock(int num) {
 	switch(num) {
 		case 11:
-				HAL_GPIO_WritePin(LED_12_GPIO_Port, LED_12_Pin, GPIO_PIN_SET);
-				break;
-		case 10:
 				HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, GPIO_PIN_SET);
 				break;
-		case 9:
+		case 10:
 				HAL_GPIO_WritePin(LED_10_GPIO_Port, LED_10_Pin, GPIO_PIN_SET);
 				break;
-		case 8:
+		case 9:
 				HAL_GPIO_WritePin(LED_9_GPIO_Port, LED_9_Pin, GPIO_PIN_SET);
 				break;
-		case 7:
+		case 8:
 				HAL_GPIO_WritePin(LED_8_GPIO_Port, LED_8_Pin, GPIO_PIN_SET);
 				break;
-		case 6:
+		case 7:
 				HAL_GPIO_WritePin(LED_7_GPIO_Port, LED_7_Pin, GPIO_PIN_SET);
 				break;
-		case 5:
+		case 6:
 				HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, GPIO_PIN_SET);
 				break;
-		case 4:
+		case 5:
 				HAL_GPIO_WritePin(LED_5_GPIO_Port, LED_5_Pin, GPIO_PIN_SET);
 				break;
-		case 3:
+		case 4:
 				HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_SET);
 				break;
-		case 2:
+		case 3:
 				HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_SET);
 				break;
-		case 1:
+		case 2:
 				HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET);
 				break;
-		case 0:
+		case 1:
 				HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_SET);
+				break;
+		case 0:
+				HAL_GPIO_WritePin(LED_12_GPIO_Port, LED_12_Pin, GPIO_PIN_SET);
 				break;
 	}
 }
@@ -189,27 +189,71 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   int check = 0;
+  int prevSec = 0, prevMin = 0, prevHour = 0;
+  int sec = 0, min = 0;
+  int curSec = 0, curMin = 0, curHour = 0;
+  clearAllClock();
+  setNumberOnClock(0);
 
   while (1)
   {
-	  if(check == 12) {
-		  HAL_GPIO_WritePin(LED_12_GPIO_Port, LED_12_Pin, GPIO_PIN_RESET);
-		  HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, GPIO_PIN_RESET);
-		  HAL_GPIO_WritePin(LED_10_GPIO_Port, LED_10_Pin, GPIO_PIN_RESET);
-		  HAL_GPIO_WritePin(LED_9_GPIO_Port, LED_9_Pin, GPIO_PIN_RESET);
-		  HAL_GPIO_WritePin(LED_8_GPIO_Port, LED_8_Pin, GPIO_PIN_RESET);
-		  HAL_GPIO_WritePin(LED_7_GPIO_Port, LED_7_Pin, GPIO_PIN_RESET);
-		  HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, GPIO_PIN_RESET);
-		  HAL_GPIO_WritePin(LED_5_GPIO_Port, LED_5_Pin, GPIO_PIN_RESET);
-		  HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_RESET);
-		  HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
-		  HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
-		  HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
+	  if(check == 5) {
 		  check = 0;
+		  prevSec = curSec;
+		  curSec++;
 	  }
+	  if(curSec == 12) {
+		  if(prevSec != curMin && prevSec != curHour) {
+			  clearNumberOnClock(prevSec);
+		  }
+		  prevSec = 0;
+		  curSec = 0;
+		  sec++;
+	  }
+	  if(sec == 5) {
+		  sec = 0;
+		  prevMin = curMin;
+		  curMin++;
+	  }
+	  if(curMin == 12) {
+		  if(prevMin != curSec && prevMin != curHour) {
+			  clearNumberOnClock(prevMin);
+		  }
+		  prevMin = 0;
+		  curMin = 0;
+		  min++;
+	  }
+	  if(min == 5) {
+		  min = 0;
+		  prevHour = curHour;
+		  curHour++;
+	  }
+	  if(curHour == 11) {
+		  clearAllClock();
+		  setNumberOnClock(0);
+		  continue;
+	  }
+
+	  // Display second
+	  if(prevSec != curMin && prevSec != curHour) {
+		  clearNumberOnClock(prevSec);
+	  }
+	  setNumberOnClock(curSec);
+
+	  // Display minute
+	  if(prevMin != curSec && prevMin != curHour) {
+		  clearNumberOnClock(prevMin);
+	  }
+	  setNumberOnClock(curMin);
+
+	  // Display hour
+	  if(prevHour != curMin && prevHour != curSec) {
+		  clearNumberOnClock(prevHour);
+	  }
+	  setNumberOnClock(curHour);
+
 	  check++;
-	  clearNumberOnClock(check-1);
-	  HAL_Delay(1000);
+	  HAL_Delay(50);
   }
   /* USER CODE END 3 */
 }

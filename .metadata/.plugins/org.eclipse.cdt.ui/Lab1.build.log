@@ -1,4 +1,4 @@
-22:51:30 **** Incremental Build of configuration Debug for project Lab1 ****
+22:58:30 **** Incremental Build of configuration Debug for project Lab1 ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "Lab1.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\BKU\Sem-5\Microprocessors-Microcontrollers\Workspace\Lab1\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -8,7 +8,7 @@ arm-none-eabi-size   Lab1.elf
 arm-none-eabi-objdump -h -S  Lab1.elf  > "Lab1.list"
 arm-none-eabi-objcopy  -O ihex  Lab1.elf  "Lab1.hex"
    text	   data	    bss	    dec	    hex	filename
-   5592	     20	   1572	   7184	   1c10	Lab1.elf
+   5636	     20	   1572	   7228	   1c3c	Lab1.elf
 arm-none-eabi-objcopy  -O binary  Lab1.elf  "Lab1.bin"
 Finished building: default.size.stdout
  
@@ -19,5 +19,5 @@ Finished building: Lab1.list
  
  
 
-22:51:30 Build Finished. 0 errors, 0 warnings. (took 535ms)
+22:58:30 Build Finished. 0 errors, 0 warnings. (took 539ms)
 

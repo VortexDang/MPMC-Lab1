@@ -190,7 +190,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   int check = 0;
   int prevSec = 0, prevMin = 0, prevHour = 0;
-  int sec = 0, min = 0;
+  int secCycle = 0, minCycle = 0;
   int curSec = 0, curMin = 0, curHour = 0;
   clearAllClock();
   setNumberOnClock(0);
@@ -208,10 +208,10 @@ int main(void)
 		  }
 		  prevSec = 0;
 		  curSec = 0;
-		  sec++;
+		  secCycle++;
 	  }
-	  if(sec == 5) {
-		  sec = 0;
+	  if(secCycle == 5) {
+		  secCycle = 0;
 		  prevMin = curMin;
 		  curMin++;
 	  }
@@ -221,10 +221,10 @@ int main(void)
 		  }
 		  prevMin = 0;
 		  curMin = 0;
-		  min++;
+		  minCycle++;
 	  }
-	  if(min == 5) {
-		  min = 0;
+	  if(minCycle == 5) {
+		  minCycle = 0;
 		  prevHour = curHour;
 		  curHour++;
 	  }

@@ -29,17 +29,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  12 .debug_info   0000309d  00000000  00000000  00020035  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00000ecc  00000000  00000000  000230d2  2**0
+ 13 .debug_abbrev 00000ebb  00000000  00000000  000230d2  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000003e8  00000000  00000000  00023fa0  2**3
+ 14 .debug_aranges 000003e8  00000000  00000000  00023f90  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 00000360  00000000  00000000  00024388  2**3
+ 15 .debug_ranges 00000360  00000000  00000000  00024378  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  000155b7  00000000  00000000  000246e8  2**0
+ 16 .debug_macro  000155b7  00000000  00000000  000246d8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000464b  00000000  00000000  00039c9f  2**0
+ 17 .debug_line   00004649  00000000  00000000  00039c8f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000799d7  00000000  00000000  0003e2ea  2**0
+ 18 .debug_str    000799e9  00000000  00000000  0003e2d8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  19 .comment      00000053  00000000  00000000  000b7cc1  2**0
                   CONTENTS, READONLY
@@ -451,7 +451,7 @@ int main(void)
  80003dc:	61fb      	str	r3, [r7, #28]
  80003de:	2300      	movs	r3, #0
  80003e0:	61bb      	str	r3, [r7, #24]
-  int sec = 0, min = 0;
+  int secCycle = 0, minCycle = 0;
  80003e2:	2300      	movs	r3, #0
  80003e4:	617b      	str	r3, [r7, #20]
  80003e6:	2300      	movs	r3, #0
@@ -509,16 +509,16 @@ int main(void)
 		  curSec = 0;
  8000434:	2300      	movs	r3, #0
  8000436:	60fb      	str	r3, [r7, #12]
-		  sec++;
+		  secCycle++;
  8000438:	697b      	ldr	r3, [r7, #20]
  800043a:	3301      	adds	r3, #1
  800043c:	617b      	str	r3, [r7, #20]
 	  }
-	  if(sec == 5) {
+	  if(secCycle == 5) {
  800043e:	697b      	ldr	r3, [r7, #20]
  8000440:	2b05      	cmp	r3, #5
  8000442:	d106      	bne.n	8000452 <main+0x92>
-		  sec = 0;
+		  secCycle = 0;
  8000444:	2300      	movs	r3, #0
  8000446:	617b      	str	r3, [r7, #20]
 		  prevMin = curMin;
@@ -552,16 +552,16 @@ int main(void)
 		  curMin = 0;
  8000472:	2300      	movs	r3, #0
  8000474:	60bb      	str	r3, [r7, #8]
-		  min++;
+		  minCycle++;
  8000476:	693b      	ldr	r3, [r7, #16]
  8000478:	3301      	adds	r3, #1
  800047a:	613b      	str	r3, [r7, #16]
 	  }
-	  if(min == 5) {
+	  if(minCycle == 5) {
  800047c:	693b      	ldr	r3, [r7, #16]
  800047e:	2b05      	cmp	r3, #5
  8000480:	d106      	bne.n	8000490 <main+0xd0>
-		  min = 0;
+		  minCycle = 0;
  8000482:	2300      	movs	r3, #0
  8000484:	613b      	str	r3, [r7, #16]
 		  prevHour = curHour;
@@ -643,8 +643,8 @@ int main(void)
  80004f6:	6a7b      	ldr	r3, [r7, #36]	; 0x24
  80004f8:	3301      	adds	r3, #1
  80004fa:	627b      	str	r3, [r7, #36]	; 0x24
-	  HAL_Delay(50);
- 80004fc:	2032      	movs	r0, #50	; 0x32
+	  HAL_Delay(10);
+ 80004fc:	200a      	movs	r0, #10
  80004fe:	f000 f95f 	bl	80007c0 <HAL_Delay>
 	  if(check == 5) {
  8000502:	e77d      	b.n	8000400 <main+0x40>

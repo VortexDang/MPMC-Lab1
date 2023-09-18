@@ -253,7 +253,7 @@ int main(void)
 	  setNumberOnClock(curHour);
 
 	  check++;
-	  HAL_Delay(50);
+	  HAL_Delay(10);
   }
   /* USER CODE END 3 */
 }
